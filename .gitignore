@@ -1,0 +1,27 @@
+# Data files
+data/raw/
+data/external/
+*.csv
+*.parquet
+
+# Models
+models/trained/
+*.pkl
+*.h5
+
+# Environment
+.env
+.venv/
+venv/
+
+# AWS
+.aws/credentials
+
+# Logs
+logs/
+*.log
+
+# Cache
+__pycache__/
+*.pyc
+.pytest_cache/
