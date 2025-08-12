@@ -1,0 +1,18 @@
+# ML/Data
+pandas>=1.5.0
+numpy>=1.24.0
+scikit-learn>=1.2.0
+tensorflow>=2.11.0
+
+# Database
+psycopg2-binary>=2.9.0
+sqlalchemy>=1.4.0
+
+# AWS
+boto3>=1.26.0
+sagemaker>=2.0.0
+
+# Utilities
+python-dotenv>=0.19.0
+pyyaml>=6.0
+click>=8.0.0
