@@ -19,7 +19,7 @@ def validate_basketball_dataset(db_path, is_zip=False):
             # Find the .sqlite file in the zip
             sqlite_files = [f for f in zip_ref.namelist() if f.endswith('.sqlite')]
             if not sqlite_files:
-                print("❌ No .sqlite file found in zip!")
+                print("No .sqlite file found in zip!")
                 return
             
             # Extracts to temp location
