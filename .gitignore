@@ -8,6 +8,7 @@ data/external/
 models/trained/
 *.pkl
 *.h5
+*.keras
 
 # Environment
 .env
