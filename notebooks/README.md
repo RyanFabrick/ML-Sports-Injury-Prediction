@@ -53,7 +53,63 @@ This notebook conducts systematic exploratory data analysis on NBA play-by-play 
 
 ### 2. [02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb)
 
-Fill in later
+This notebook implements comprehensive data preprocessing and feature engineering on NBA play-by-play data, transforming raw game events into sophisticated workload and injury risk indicators. The pipeline creates 76 engineered features across six distinct categories, implementing temporal rolling windows, performance decline detection, and fatigue accumulation metrics while maintaining strict temporal validation to prevent data leakage.
+
+**Key Feature Engineering Categories:**
+
+**Rolling Workload Metrics (3 temporal windows)**
+- **Shooting Load Features**: 7-day, 14-day, and 30-day rolling averages combining made shots, missed shots, and free throws (37.4% of player actions), capturing sustained offensive usage patterns
+- **Defensive Load Tracking**: Rolling rebound activity across multiple time windows (22.5% of actions), quantifying physical contact and positioning demands
+- **Contact Load Assessment**: Combined fouls and free throws over rolling periods (18.7% of actions), measuring physical confrontation intensity and injury risk exposure
+- **Ball Handling Stress**: Turnover frequency analysis across temporal windows identifying pressure situations and decision-making workload
+
+**Usage Rate and Intensity Analysis**
+- **Actions Per Game Intensity**: Player-relative metrics comparing current activity to historical baselines, normalizing for individual usage patterns (ranges 0.59-1.11x personal averages)
+- **Position-Specific Usage Rates**: Shooting, defensive, and contact usage proportions accounting for role-based activity allocation and tactical responsibilities
+- **Ball Security Indicators**: Inverse turnover rates measuring ball-handling efficiency under pressure (0.94-1.00 for elite players like Karl-Anthony Towns)
+- **Substitution Pattern Analysis**: Frequency metrics serving as fatigue and performance decline indicators
+
+**Performance Comparison Features**
+- **Historical Baseline Comparisons**: Season and career averages using expanding windows with shift(1) operations preventing data leakage, transforming absolute statistics into relative performance metrics
+- **Anomaly Detection Results**: Identified 242 games exceeding 150% of season average (high-load risk) and 155 games below 50% (potential injury/rest scenarios)
+- **Temporal Progression Tracking**: Current game performance ratios against evolving historical patterns, enabling detection when players operate outside typical workload ranges
+
+**Performance Decline Indicators**
+- **Multi-Scale Trend Analysis**: 7-day vs 30-day performance comparisons capturing both acute fatigue and chronic performance deterioration patterns
+- **Consecutive Pattern Detection**: Sequential low-performance game tracking with 70% personal average threshold, identifying sustained decline periods
+- **Efficiency Trend Slopes**: Linear regression slopes over 7-game windows for both volume and efficiency metrics, detecting gradual performance degradation
+
+**Fatigue and Recovery Assessment**
+- **Rest Pattern Integration**: Back-to-back game indicators, rest day calculations, and dense scheduling detection (4+ games in 6 days) capturing recovery opportunity variations
+- **Seasonal Progression Metrics**: Days and games into season providing cumulative fatigue baselines normalized by 82-game schedule expectations
+- **Composite Fatigue Scoring**: Weighted combination (30% recent density, 30% rest deficit, 40% seasonal progression) generating normalized 0-1 fatigue risk indicators
+
+**Contextual Risk Profiling**
+- **Physical Attributes Integration**: Age calculation, BMI computation, and position-based risk multipliers (Centers: 1.3x, Point Guards: 0.8x) incorporating biomechanical research
+- **Career Experience Factors**: Season experience, lottery pick status, and career span variables capturing veteran wear vs rookie resilience patterns
+- **Temporal Context Features**: Season phase indicators, holiday period flags, and playoff push detection accounting for external scheduling pressures
+
+**Data Quality and Preprocessing Achievements:**
+- **Temporal Validation Framework**: Implemented expanding window calculations with proper shift operations ensuring no future information leakage, maintaining prediction validity for real-world deployment
+- **Missing Value Strategy**: Strategic imputation for first games (neutral 1.0 ratios) and biographical data gaps, achieving complete feature coverage across modeling variables
+- **Feature Selection Optimization**: Reduced 76 engineered features to 34 selected variables through correlation analysis and importance ranking, addressing multicollinearity (0.86-0.96 correlations between time windows)
+- **Class Imbalance Preparation**: SMOTE balancing on training data maintaining temporal splits, achieving 6,975 training samples with proper 2.4% injury rate representation
+
+**Injury Target Variable Development:**
+- **Gap-Based Classification System**: Normal gaps (1-6 days, 94.6%), load management (7-13 days, 2.9%), and injury periods (14+ days, 2.5%) using scheduling analysis methodology
+- **Forward-Looking Predictions**: Binary targets for 7-day and 14-day injury risk windows enabling proactive intervention strategies aligned with medical staff decision timelines
+- **Population Validation**: Identified injury-prone players (Joel Embiid: 3.4% rate, Anthony Davis: 3.3%) and healthy baselines (Julius Randle: 1.4%, Nikola Jokic: 1.7%) confirming realistic injury distribution patterns
+
+**Temporal Pattern Recognition:**
+- **Seasonal Injury Progression**: Demonstrated injury rate escalation from 1.0% (early season) to 8.9% (late season), capturing cumulative fatigue effects and playoff intensity
+- **Fatigue Correlation Validation**: Strong relationship between composite fatigue scores and injury occurrence (1.2% at very low fatigue, 6.6% at very high fatigue)
+- **Monthly Risk Patterns**: Peak injury periods during April (13.4%), May (14.7%), and August (18.7%) aligned with season-ending intensity and off-season preparation demands
+
+**ML Pipeline Production Readiness:**
+- **Dataset Partitioning Strategy**: Created temporally-aware training (6,975 samples), validation (2,567 samples), and test (589 samples) splits preventing data leakage while maintaining representative injury distributions
+- **Feature Documentation Framework**: Generated comprehensive feature reference documentation, selection results, and preprocessing configurations enabling model interpretability and deployment consistency
+- **Class Weighting Optimization**: Computed balanced class weights (Class 0: 0.51, Class 1: 20.88) addressing severe class imbalance for improved model training performance
+- **Serialization and Persistence**: Complete preprocessing pipeline saved with selected features, class weights, and transformation parameters enabling seamless model deployment and real-time inference capabilities
 
 ### 3. [03_Modeling](03_modeling.ipynb)
 
