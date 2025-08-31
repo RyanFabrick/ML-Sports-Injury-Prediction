@@ -16,7 +16,7 @@
 
 Fill in later
 
-- **[01_Exploratory Data Analysis](01_EDA_complete.pdf)** 
+- **[01_Exploratory Data Analysis](01_EDA.ipynb)** 
 - **[02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb)** 
 - **[03_Modeling](03_modeling.ipynb)** 
 - **[04_Evaluation](04_evaluation.ipynb)** 
@@ -25,13 +25,13 @@ Fill in later
 
 ### 1. [01_Exploratory Data Analysis](01_EDA_complete.pdf)
 
-This notebook conducts systematic exploratory data analysis on NBA play-by-play data spanning 2015-2023, implementing rigorous academic methodology to understand player workload patterns, injury indicators, and data quality for machine learning pipeline development. The analysis covers 4.78 million play-by-play records across 10,460 games and 2,678 unique players from the modern analytics era of professional basketball.
+This notebook conducts systematic exploratory data analysis on NBA play by play data spanning 2015-2023, implementing academic methodology to understand player workload patterns, injury indicators, and data quality for machine learning pipeline development. The analysis covers 4.78 million play by play records across 10,460 games and 2,678 unique players from the modern analytics era of professional basketball.
 
 **Key Analytical Findings:**
 - **Modern Analytics Era Focus**: Established 2015+ timeframe capturing load management revolution, tracking camera implementation, and post-Warriors championship pace changes, providing 4.78M records across 9 seasons with consistent methodology
-- **Player Activity Patterns**: Identified high-usage players led by Giannis Antetokounmpo (30,862 total actions across 661 games), establishing minimum thresholds for modeling candidates (100+ games, substantial action volume) ensuring sufficient data for reliable injury prediction
-- **Event Type Distribution**: Analyzed 12 distinct event types with rebounds (22.49%), missed shots (20.22%), and made shots (17.20%) dominating player actions, providing comprehensive workload categorization for physical contact, shooting volume, and defensive activity metrics
-- **Data Quality Assessment**: Achieved 98.1% player ID completeness (4.78M of 4.88M records) with robust JOIN performance (31 seconds for 320K records), confirming scalable architecture for feature engineering and real-time prediction pipelines
+- **Player Activity Patterns**: Identified high usage players led by Giannis Antetokounmpo (30,862 total actions across 661 games), establishing minimum thresholds for modeling candidates (100+ games, substantial action volume) ensuring sufficient data for reliable injury prediction
+- **Event Type Distribution**: Analyzed 12 distinct event types with rebounds (22.49%), missed shots (20.22%), and made shots (17.20%) dominating player actions, providing workload categorization for physical contact, shooting volume, and defensive activity metrics
+- **Data Quality Assessment**: Achieved 98.1% player ID completeness (4.78M of 4.88M records) with robust JOIN performance (31 seconds for 320K records), confirming scalable architecture for feature engineering and real time prediction pipelines
 
 **Temporal Coverage Analysis:**
 - **Standard Seasons Consistency**: Regular seasons (2015-2019, 2021-2022) show stable volume ranges of 540K-590K records annually with 1,200-1,300 games, providing reliable training data foundation
@@ -45,15 +45,15 @@ This notebook conducts systematic exploratory data analysis on NBA play-by-play 
 
 **Data Pipeline Architecture:**
 - **Database Schema Validation**: Confirmed robust relational structure with play_by_play as primary source (34 columns), game table providing temporal context (55 columns), and common_player_info supplying demographic features (33 columns) supporting comprehensive feature engineering
-- **Query Performance Optimization**: Verified JOIN operation efficiency with complex multi-table queries processing adequately for large-scale feature engineering, demonstrating production-ready infrastructure for real-time prediction systems
-- **Geographic and Demographic Integration**: Player metadata includes physical attributes (height, weight), career span data, draft information, and position classifications enabling risk profiling based on age, size, experience, and role-specific factors
+- **Query Performance Optimization**: Verified JOIN operation efficiency with complex multi table queries processing adequately for large-scale feature engineering, demonstrating production ready infrastructure for real time prediction systems
+- **Geographic and Demographic Integration**: Player metadata includes physical attributes (height, weight), career span data, draft information, and position classifications enabling risk profiling based on age, size, experience, and role specific factors
 
 **ML Pipeline Implications:**
-- The analysis establishes preprocessing requirements including player filtering strategies (minimum game thresholds), temporal window definitions for rolling metrics, and event classification systems for workload quantification. Injury prediction modeling must incorporate absence pattern recognition, performance decline detection, and position-specific risk factors to achieve reliable performance on this complex, temporally-structured sports dataset.
+- The analysis establishes preprocessing requirements including player filtering strategies (minimum game thresholds), temporal window definitions for rolling metrics, and event classification systems for workload quantification. Injury prediction modeling must incorporate absence pattern recognition, performance decline detection, and position specific risk factors to achieve reliable performance on this complex, temporally structured sports dataset.
 
 ### 2. [02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb)
 
-This notebook implements comprehensive data preprocessing and feature engineering on NBA play-by-play data, transforming raw game events into sophisticated workload and injury risk indicators. The pipeline creates 76 engineered features across six distinct categories, implementing temporal rolling windows, performance decline detection, and fatigue accumulation metrics while maintaining strict temporal validation to prevent data leakage.
+This notebook implements data preprocessing and feature engineering on NBA play by play data, transforming raw game events into workload and injury risk indicators. The pipeline creates 76 engineered features across six distinct categories, implementing temporal rolling windows, performance decline detection, and fatigue accumulation metrics while maintaining strict temporal validation to prevent data leakage.
 
 **Key Feature Engineering Categories:**
 
@@ -64,9 +64,9 @@ This notebook implements comprehensive data preprocessing and feature engineerin
 - **Ball Handling Stress**: Turnover frequency analysis across temporal windows identifying pressure situations and decision-making workload
 
 **Usage Rate and Intensity Analysis**
-- **Actions Per Game Intensity**: Player-relative metrics comparing current activity to historical baselines, normalizing for individual usage patterns (ranges 0.59-1.11x personal averages)
-- **Position-Specific Usage Rates**: Shooting, defensive, and contact usage proportions accounting for role-based activity allocation and tactical responsibilities
-- **Ball Security Indicators**: Inverse turnover rates measuring ball-handling efficiency under pressure (0.94-1.00 for elite players like Karl-Anthony Towns)
+- **Actions Per Game Intensity**: Player relative metrics comparing current activity to historical baselines, normalizing for individual usage patterns (ranges 0.59-1.11x personal averages)
+- **Position-Specific Usage Rates**: Shooting, defensive, and contact usage proportions accounting for role based activity allocation and tactical responsibilities
+- **Ball Security Indicators**: Inverse turnover rates measuring ball handling efficiency under pressure (0.94-1.00 for elite players like Karl-Anthony Towns)
 - **Substitution Pattern Analysis**: Frequency metrics serving as fatigue and performance decline indicators
 
 **Performance Comparison Features**
@@ -76,44 +76,44 @@ This notebook implements comprehensive data preprocessing and feature engineerin
 
 **Performance Decline Indicators**
 - **Multi-Scale Trend Analysis**: 7-day vs 30-day performance comparisons capturing both acute fatigue and chronic performance deterioration patterns
-- **Consecutive Pattern Detection**: Sequential low-performance game tracking with 70% personal average threshold, identifying sustained decline periods
+- **Consecutive Pattern Detection**: Sequential low performance game tracking with 70% personal average threshold, identifying sustained decline periods
 - **Efficiency Trend Slopes**: Linear regression slopes over 7-game windows for both volume and efficiency metrics, detecting gradual performance degradation
 
 **Fatigue and Recovery Assessment**
-- **Rest Pattern Integration**: Back-to-back game indicators, rest day calculations, and dense scheduling detection (4+ games in 6 days) capturing recovery opportunity variations
+- **Rest Pattern Integration**: Back to back game indicators, rest day calculations, and dense scheduling detection (4+ games in 6 days) capturing recovery opportunity variations
 - **Seasonal Progression Metrics**: Days and games into season providing cumulative fatigue baselines normalized by 82-game schedule expectations
 - **Composite Fatigue Scoring**: Weighted combination (30% recent density, 30% rest deficit, 40% seasonal progression) generating normalized 0-1 fatigue risk indicators
 
 **Contextual Risk Profiling**
-- **Physical Attributes Integration**: Age calculation, BMI computation, and position-based risk multipliers (Centers: 1.3x, Point Guards: 0.8x) incorporating biomechanical research
+- **Physical Attributes Integration**: Age calculation, BMI computation, and position based risk multipliers (Centers: 1.3x, Point Guards: 0.8x) incorporating biomechanical research
 - **Career Experience Factors**: Season experience, lottery pick status, and career span variables capturing veteran wear vs rookie resilience patterns
 - **Temporal Context Features**: Season phase indicators, holiday period flags, and playoff push detection accounting for external scheduling pressures
 
 **Data Quality and Preprocessing Achievements:**
-- **Temporal Validation Framework**: Implemented expanding window calculations with proper shift operations ensuring no future information leakage, maintaining prediction validity for real-world deployment
+- **Temporal Validation Framework**: Implemented expanding window calculations with proper shift operations ensuring no future information leakage, maintaining prediction validity for real world deployment
 - **Missing Value Strategy**: Strategic imputation for first games (neutral 1.0 ratios) and biographical data gaps, achieving complete feature coverage across modeling variables
 - **Feature Selection Optimization**: Reduced 76 engineered features to 34 selected variables through correlation analysis and importance ranking, addressing multicollinearity (0.86-0.96 correlations between time windows)
 - **Class Imbalance Preparation**: SMOTE balancing on training data maintaining temporal splits, achieving 6,975 training samples with proper 2.4% injury rate representation
 
 **Injury Target Variable Development:**
-- **Gap-Based Classification System**: Normal gaps (1-6 days, 94.6%), load management (7-13 days, 2.9%), and injury periods (14+ days, 2.5%) using scheduling analysis methodology
-- **Forward-Looking Predictions**: Binary targets for 7-day and 14-day injury risk windows enabling proactive intervention strategies aligned with medical staff decision timelines
-- **Population Validation**: Identified injury-prone players (Joel Embiid: 3.4% rate, Anthony Davis: 3.3%) and healthy baselines (Julius Randle: 1.4%, Nikola Jokic: 1.7%) confirming realistic injury distribution patterns
+- **Gap Based Classification System**: Normal gaps (1-6 days, 94.6%), load management (7-13 days, 2.9%), and injury periods (14+ days, 2.5%) using scheduling analysis methodology
+- **Forward Looking Predictions**: Binary targets for 7-day and 14-day injury risk windows enabling proactive intervention strategies aligned with medical staff decision timelines
+- **Population Validation**: Identified injury prone players (Joel Embiid: 3.4% rate, Anthony Davis: 3.3%) and healthy baselines (Julius Randle: 1.4%, Nikola Jokic: 1.7%) confirming realistic injury distribution patterns
 
 **Temporal Pattern Recognition:**
 - **Seasonal Injury Progression**: Demonstrated injury rate escalation from 1.0% (early season) to 8.9% (late season), capturing cumulative fatigue effects and playoff intensity
 - **Fatigue Correlation Validation**: Strong relationship between composite fatigue scores and injury occurrence (1.2% at very low fatigue, 6.6% at very high fatigue)
-- **Monthly Risk Patterns**: Peak injury periods during April (13.4%), May (14.7%), and August (18.7%) aligned with season-ending intensity and off-season preparation demands
+- **Monthly Risk Patterns**: Peak injury periods during April (13.4%), May (14.7%), and August (18.7%) aligned with season-ending intensity and off season preparation demands
 
 **ML Pipeline Production Readiness:**
-- **Dataset Partitioning Strategy**: Created temporally-aware training (6,975 samples), validation (2,567 samples), and test (589 samples) splits preventing data leakage while maintaining representative injury distributions
+- **Dataset Partitioning Strategy**: Created temporally aware training (6,975 samples), validation (2,567 samples), and test (589 samples) splits preventing data leakage while maintaining representative injury distributions
 - **Feature Documentation Framework**: Generated comprehensive feature reference documentation, selection results, and preprocessing configurations enabling model interpretability and deployment consistency
 - **Class Weighting Optimization**: Computed balanced class weights (Class 0: 0.51, Class 1: 20.88) addressing severe class imbalance for improved model training performance
-- **Serialization and Persistence**: Complete preprocessing pipeline saved with selected features, class weights, and transformation parameters enabling seamless model deployment and real-time inference capabilities
+- **Serialization and Persistence**: Complete preprocessing pipeline saved with selected features, class weights, and transformation parameters enabling seamless model deployment and real time inference capabilities
 
 ### 3. [03_Modeling](03_modeling.ipynb)
 
-This notebook implements machine learning model development for NBA injury prediction, training and evaluating four distinct algorithms on engineered workload and fatigue features. The modeling pipeline addresses severe class imbalance (2.4% injury rate), implements rigorous hyperparameter optimization, and demonstrates varying degrees of overfitting across model architectures while maintaining consistent feature importance patterns centered on fatigue and workload metrics.
+This notebook implements machine learning model development for NBA injury prediction, training and evaluating four algorithms on engineered workload and fatigue features. The modeling pipeline addresses severe class imbalance (2.4% injury rate), implements rigorous hyperparameter optimization, and demonstrates varying degrees of overfitting across model architectures while maintaining consistent feature importance patterns centered on fatigue and workload metrics.
 
 **Model Architecture Implementations:**
 
@@ -121,23 +121,23 @@ This notebook implements machine learning model development for NBA injury predi
 - **Configuration**: L2 regularization (C=1.0), balanced class weights (Class 0: 0.51, Class 1: 20.88), LBFGS solver optimized for small datasets with 1000 iteration limit ensuring convergence
 - **Training Performance**: 74.7% accuracy with 6.7% precision and 74.3% recall, achieving 83.0% ROC-AUC and 18.5% PR-AUC on training data, demonstrating strong discriminative capability on balanced training set
 - **Validation Degradation**: Performance drops to 75.7% accuracy, 5.7% precision, 45.5% recall with 64.5% ROC-AUC and 9.8% PR-AUC, indicating moderate overfitting and generalization challenges
-- **Test Set Reality**: Severe performance collapse to 47.7% accuracy, 0.7% precision, 33.3% recall with 37.2% ROC-AUC, revealing poor real-world applicability on unseen data with extreme class imbalance (97.2:1 ratio)
+- **Test Set Reality**: Severe performance collapse to 47.7% accuracy, 0.7% precision, 33.3% recall with 37.2% ROC-AUC, revealing poor real world applicability on unseen data with extreme class imbalance (97.2:1 ratio)
 
 **Random Forest Ensemble Method**
 - **Hyperparameter Optimization**: Grid search across 162 parameter combinations using 3-fold stratified cross-validation, optimizing for PR-AUC (average precision) with 76-second training time
-- **Best Configuration**: 150 estimators, maximum depth 15, minimum samples split 50, minimum samples leaf 20, sqrt feature selection, balanced_subsample class weighting achieving 0.1729 cross-validation PR-AUC
+- **Best Configuration**: 150 estimators, maximum depth 15, minimum samples split 50, minimum samples leaf 20, sqrt feature selection, balanced_subsample class weighting achieving 0.1729 crossvalidation PR-AUC
 - **Extreme Overfitting Pattern**: Training performance reaches 98.5% accuracy with 62.4% precision, 96.4% recall, and 99.6% ROC-AUC, indicating near-perfect memorization of training patterns
 - **Generalization Failure**: Validation accuracy remains high (96.1%) but precision drops dramatically to 23.9% with 14.3% recall, while test performance collapses to 3.7% precision and 16.7% recall despite extensive hyperparameter tuning
 
 **XGBoost Gradient Boosting Implementation**
-- **Class Imbalance Handling**: Automatic scale_pos_weight calculation (40.77) based on negative-to-positive class ratio, combined with extensive regularization (L1: 0.5, L2: 2.0) and conservative learning parameters
-- **Comprehensive Hyperparameter Search**: 2,187 parameter combinations across 6,561 total cross-validation fits with early stopping (10 rounds patience), achieving 0.143 best cross-validation PR-AUC
+- **Class Imbalance Handling**: Automatic scale_pos_weight calculation (40.77) based on negative to positive class ratio, combined with extensive regularization (L1: 0.5, L2: 2.0) and conservative learning parameters
+- **Comprehensive Hyperparameter Search**: 2,187 parameter combinations across 6,561 total cross validation fits with early stopping (10 rounds patience), achieving 0.143 best cross validation PR-AUC
 - **Optimal Configuration**: Maximum depth 3 (conservative), learning rate 0.1, 100 estimators, 70% subsample ratios for both samples and features, demonstrating preference for regularized, shallow trees
 - **Balanced Performance Profile**: Training metrics show 82.2% accuracy, 9.7% precision, 77.2% recall with 88.4% ROC-AUC, indicating more controlled learning without extreme overfitting compared to Random Forest
 
 **Neural Network Deep Learning Architecture**
 - **Architecture Design**: Sequential model with 64→32→16→1 unit progression, ReLU activation functions, dropout layers (30%, 30%, 20%), batch normalization for gradient stability, and sigmoid output for binary classification
-- **Training Configuration**: Adam optimizer (learning rate 0.001), binary cross-entropy loss, sample weight implementation for class imbalance, batch size 32 with early stopping (15 epochs patience) and learning rate reduction
+- **Training Configuration**: Adam optimizer (learning rate 0.001), binary cross entropy loss, sample weight implementation for class imbalance, batch size 32 with early stopping (15 epochs patience) and learning rate reduction
 - **Training Dynamics**: Early convergence at epoch 17 with best validation loss at epoch 2, learning rate reduction to 0.0005 at epoch 12, final training loss 0.5259 vs validation loss 0.8868 indicating overfitting
 - **Model Complexity**: 5,313 total parameters (5,089 trainable), approximately 20.8KB model size, demonstrating efficient parameter utilization for injury prediction task
 
@@ -149,43 +149,43 @@ This notebook implements machine learning model development for NBA injury predi
 - **Performance Comparison Metrics**: Current vs 14-day averages rank highly across models, indicating performance decline as injury predictor
 - **Workload Accumulation**: Shooting and defensive load metrics consistently appear in top 15 features, confirming cumulative stress hypothesis
 
-**Model-Specific Feature Insights:**
-- **Logistic Regression Counterintuitive Findings**: Back-to-back games show protective coefficient (-1.844), potentially indicating selection bias where only healthy players participate in consecutive games
-- **Random Forest Activity Patterns**: Total actions and performance trends dominate beyond fatigue, suggesting tree-based methods capture complex interaction effects
+**Model Specific Feature Insights:**
+- **Logistic Regression Counterintuitive Findings**: Back to back games show protective coefficient (-1.844), potentially indicating selection bias where only healthy players participate in consecutive games
+- **Random Forest Activity Patterns**: Total actions and performance trends dominate beyond fatigue, suggesting tree based methods capture complex interaction effects
 - **XGBoost Balanced Profile**: More distributed importance across rebounding, substitution frequency, and shooting patterns, indicating ensemble learning captures diverse risk factors
 
 **Performance Validation and Risk Assessment:**
 
-**Top-K Risk Prediction Effectiveness:**
-- **Logistic Regression Risk Capture**: Top 5% highest-risk predictions capture 14.3% of actual injuries (8.6% precision), scaling to 37.7% capture rate in top 20% predictions
+**Top K Risk Prediction Effectiveness:**
+- **Logistic Regression Risk Capture**: Top 5% highest risk predictions capture 14.3% of actual injuries (8.6% precision), scaling to 37.7% capture rate in top 20% predictions
 - **Random Forest Superior Capture**: Top 5% predictions capture 20.8% of injuries (12.5% precision), achieving 40.3% capture rate in top 20% with highest precision among tested models
-- **XGBoost Consistent Performance**: Top 20% risk group captures 51.9% of actual injuries (7.8% precision), demonstrating best overall sensitivity for high-risk player identification
+- **XGBoost Consistent Performance**: Top 20% risk group captures 51.9% of actual injuries (7.8% precision), demonstrating best overall sensitivity for high risk player identification
 
 **Cross-Model Validation Insights:**
 - **ROC-AUC Degradation Pattern**: All models show validation ROC-AUC between 60-69% dropping to 35-45% on test set, indicating consistent generalization challenges with temporal data splits
-- **Precision-Recall Trade-offs**: Models achieve reasonable recall (35-45% on validation) but suffer precision collapse (0.6-7.5%), reflecting severe class imbalance challenges in real-world deployment
+- **Precision Recall Trade offs**: Models achieve reasonable recall (35-45% on validation) but suffer precision collapse (0.6-7.5%), reflecting severe class imbalance challenges in real world deployment
 - **Class Imbalance Reality**: Test set ratio (97.2:1) more extreme than training (40.8:1) or validation (32.3:1), demonstrating temporal injury rate variations affecting model reliability
 
 **Model Selection and Deployment Considerations:**
 
 **Production Readiness Assessment:**
-- **XGBoost Recommended**: Demonstrates most balanced performance profile with controlled overfitting, reasonable generalization, and superior top-20% risk capture (51.9%) for practical intervention strategies
+- **XGBoost Recommended**: Demonstrates most balanced performance profile with controlled overfitting, reasonable generalization, and superior top 20% risk capture (51.9%) for practical intervention strategies
 - **Feature Engineering Validation**: Consistent importance of fatigue score, workload metrics, and performance decline indicators across all model types confirms feature engineering effectiveness
-- **Temporal Validation Success**: Proper time-series splits prevent data leakage while revealing realistic performance expectations for deployment scenarios
+- **Temporal Validation Success**: Proper time series splits prevent data leakage while revealing realistic performance expectations for deployment scenarios
 
 **Clinical Decision Support Integration:**
-- **Risk Stratification Capability**: Models successfully identify high-risk periods with 7.8-12.5% precision in top-tier predictions, providing actionable intelligence for medical staff intervention
+- **Risk Stratification Capability**: Models successfully identify high risk periods with 7.8-12.5% precision in top tier predictions, providing actionable intelligence for medical staff intervention
 - **False Positive Management**: High false positive rates (94% of top predictions) require careful integration with clinical judgment and additional screening protocols
 - **Interpretability Framework**: Saved feature importance rankings, model coefficients, and prediction probabilities enable transparent decision support for sports medicine applications
 
 **Model Persistence and Infrastructure:**
-- **Complete Model Serialization**: All trained models, predictions, performance metrics, feature importance data, and hyperparameter search results saved with timestamp-based versioning system
-- **Deployment Package Creation**: Model scaler, preprocessing configurations, selected features list, and class weights persisted for consistent real-time inference capability
+- **Complete Model Serialization**: All trained models, predictions, performance metrics, feature importance data, and hyperparameter search results saved with timestamp based versioning system
+- **Deployment Package Creation**: Model scaler, preprocessing configurations, selected features list, and class weights persisted for consistent real time inference capability
 - **Manifest System Implementation**: Comprehensive model registry with performance summaries enabling systematic model comparison and selection for production deployment
 
 ### 4. [04_Evaluation](04_evaluation.ipynb)
 
-This notebook provides an evaluation analysis of four machine learning models for NBA injury prediction, revealing critical performance patterns, model limitations, and deployment considerations through multi-dimensional assessment frameworks. The analysis exposes significant overfitting issues, class imbalance challenges, and generalization failures while identifying optimal model selection criteria for real-world sports medicine applications.
+This notebook provides an evaluation analysis of four machine learning models for NBA injury prediction, revealing critical performance patterns, model limitations, and deployment considerations through multi dimensional assessment frameworks. The analysis exposes significant overfitting issues, class imbalance challenges, and generalization failures while identifying optimal model selection criteria for real world sports medicine applications.
 
 **Comprehensive Performance Assessment Framework:**
 
@@ -204,45 +204,45 @@ This notebook provides an evaluation analysis of four machine learning models fo
 **Feature Importance Consensus and Model Interpretability**
 - **Universal Predictor Identification**: Fatigue score emerges as the dominant predictor across all models (Logistic Regression: 1.836 coefficient, Random Forest: 13.4% importance, XGBoost: 8.5% importance), validating composite fatigue metric as primary injury risk factor
 - **Model-Specific Feature Preferences**: Only 1 out of 20 unique important features shows complete consensus, indicating different models capture distinct injury risk patterns and supporting ensemble approach potential
-- **Counterintuitive Relationship Discovery**: Back-to-back games show protective association in Logistic Regression (-1.467 coefficient), likely reflecting load management practices where only healthy players participate in consecutive games
+- **Counterintuitive Relationship Discovery**: back to back games show protective association in Logistic Regression (-1.467 coefficient), likely reflecting load management practices where only healthy players participate in consecutive games
 - **Workload Pattern Recognition**: Performance deviation metrics (current vs 14-day average, rebounds vs season average) consistently rank highly, confirming the hypothesis that statistical anomalies precede injury events
 
 **Performance-Complexity Trade-off Optimization**
-- **Optimal Balance Point Identification**: XGBoost achieves best performance-complexity ratio with 0.690 validation ROC AUC using 3,500 parameters and 180-second training time, representing the sweet spot for production deployment
-- **Efficiency Leadership**: Logistic Regression delivers 94% of XGBoost's performance with only 1% of parameters (35 vs 3,500) and training time (2s vs 180s), making it ideal for real-time applications requiring interpretability
+- **Optimal Balance Point Identification**: XGBoost achieves best performance complexity ratio with 0.690 validation ROC AUC using 3,500 parameters and 180-second training time, representing the sweet spot for production deployment
+- **Efficiency Leadership**: Logistic Regression delivers 94% of XGBoost's performance with only 1% of parameters (35 vs 3,500) and training time (2s vs 180s), making it ideal for real time applications requiring interpretability
 - **Complexity Paradox**: Neural Network's 5,313 parameters yield worst performance (0.590 ROC AUC), while Random Forest's 5,250 parameters suffer from severe overfitting, demonstrating that parameter count doesn't guarantee better results
-- **Deployment Recommendation Framework**: Real-time injury alerts favor Logistic Regression's interpretability and speed, while comprehensive weekly risk assessments benefit from XGBoost's accuracy-complexity balance
+- **Deployment Recommendation Framework**: real time injury alerts favor Logistic Regression's interpretability and speed, while comprehensive weekly risk assessments benefit from XGBoost's accuracy complexity balance
 
 **Confusion Matrix and Clinical Performance Metrics**
 - **Test Set Reality Assessment**: Random Forest achieves highest specificity (95.5%) but poor sensitivity (16.7%), while Neural Network provides most balanced performance (50.0% sensitivity/specificity) at lower overall effectiveness
 - **Positive Predictive Value Crisis**: All models suffer from extremely low test set PPV (0.006-0.037), indicating 97-99% false positive rates that would overwhelm medical staff in practical deployment scenarios
 - **Class Imbalance Severity**: High negative predictive values (98.6-99.1%) reflect dataset composition rather than model quality, with test set showing more extreme imbalance (97.2:1) than training data (40.8:1)
-- **Cost-Sensitive Learning Requirements**: Poor sensitivity-specificity balance across models necessitates threshold optimization and cost-sensitive learning approaches to minimize false negatives in injury prediction context
+- **Cost Sensitive Learning Requirements**: Poor sensitivity specificity balance across models necessitates threshold optimization and cost sensitive learning approaches to minimize false negatives in injury prediction context
 
-**Top-K Risk Stratification Effectiveness**
-- **Risk Capture Performance Rankings**: XGBoost captures 48.1% of injuries in top 17% of predictions, Random Forest achieves highest precision (23.5%) at 2% threshold, while Logistic Regression provides middle-ground performance at 10% threshold
-- **Precision-Coverage Trade-offs**: Random Forest excels in high-precision, low-coverage scenarios (15.6% injury capture), while XGBoost optimizes for broader screening with acceptable precision (8.5%), enabling different intervention strategies
-- **Risk Distribution Analysis**: Heavy overlap between injury and no-injury risk scores across all models indicates limited discriminative power, suggesting need for enhanced feature engineering or alternative modeling approaches
+**Top K Risk Stratification Effectiveness**
+- **Risk Capture Performance Rankings**: XGBoost captures 48.1% of injuries in top 17% of predictions, Random Forest achieves highest precision (23.5%) at 2% threshold, while Logistic Regression provides middle ground performance at 10% threshold
+- **Precision Coverage Trade offs**: Random Forest excels in high precision, low coverage scenarios (15.6% injury capture), while XGBoost optimizes for broader screening with acceptable precision (8.5%), enabling different intervention strategies
+- **Risk Distribution Analysis**: Heavy overlap between injury and no injury risk scores across all models indicates limited discriminative power, suggesting need for enhanced feature engineering or alternative modeling approaches
 - **Optimal Operating Point Variation**: Large differences in optimal K values (Random Forest: 2%, XGBoost: 17%, Neural Network: 6%) reflect distinct model calibration characteristics requiring individualized threshold selection
 
 **Critical Issues and Improvement Requirements**
 
 **Systematic Pipeline Problems Identified:**
-- **Validation Methodology Concerns**: Near-zero validation metrics across multiple models suggest temporal validation implementation errors or data preprocessing issues requiring comprehensive pipeline audit
+- **Validation Methodology Concerns**: Near zero validation metrics across multiple models suggest temporal validation implementation errors or data preprocessing issues requiring comprehensive pipeline audit
 - **Generalization Failure Pattern**: Consistent performance degradation from training to test indicates fundamental modeling challenges extending beyond hyperparameter tuning to feature engineering and temporal validation strategies
 - **Class Imbalance Underestimation**: Test set imbalance severity (97.2:1) exceeds training expectations, revealing temporal injury rate variations that complicate deployment planning and threshold optimization
 
 **Strategic Improvement Recommendations:**
-- **Immediate Technical Actions**: Investigate validation set construction methodology, implement stronger regularization techniques, review temporal split strategies to prevent data leakage, and develop cost-sensitive learning frameworks
-- **Feature Engineering Enhancement**: Expand performance deviation metrics, incorporate load management indicators, develop position-specific risk models, and create ensemble features combining multiple temporal windows
-- **Clinical Integration Strategy**: Establish false positive tolerance thresholds, develop multi-stage screening protocols, create interpretable risk scoring systems, and implement model confidence intervals for clinical decision support
+- **Immediate Technical Actions**: Investigate validation set construction methodology, implement stronger regularization techniques, review temporal split strategies to prevent data leakage, and develop cost sensitive learning frameworks
+- **Feature Engineering Enhancement**: Expand performance deviation metrics, incorporate load management indicators, develop position specific risk models, and create ensemble features combining multiple temporal windows
+- **Clinical Integration Strategy**: Establish false positive tolerance thresholds, develop multi stage screening protocols, create interpretable risk scoring systems, and implement model confidence intervals for clinical decision support
 
 **Deployment Strategy and Model Selection Framework**
 
 **Production Environment Considerations:**
-- **Real-Time Alert Systems**: Deploy Logistic Regression for immediate injury risk notifications requiring maximum interpretability and sub-second inference time for training staff decision support
-- **Weekly Risk Assessment Pipeline**: Implement XGBoost for comprehensive player evaluation where 3-minute training time is acceptable and superior accuracy justifies increased complexity
-- **Resource Allocation Optimization**: Use Random Forest precision-focused approach for limited intervention capacity scenarios, while XGBoost coverage optimization suits broader screening programs
+- **real time Alert Systems**: Deploy Logistic Regression for immediate injury risk notifications requiring maximum interpretability and sub second inference time for training staff decision support
+- **Weekly Risk Assessment Pipeline**: Implement XGBoost for comprehensive player evaluation where 3 minute training time is acceptable and superior accuracy justifies increased complexity
+- **Resource Allocation Optimization**: Use Random Forest precision focused approach for limited intervention capacity scenarios, while XGBoost coverage optimization suits broader screening programs
 - **Regulatory Compliance Requirements**: Leverage Logistic Regression's full interpretability for medical decision transparency, documentation requirements, and player health record integration
 
 **Model Performance Monitoring and Maintenance:**
