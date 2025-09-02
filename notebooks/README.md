@@ -14,7 +14,7 @@
     
 ## Overview
 
-Fill in later
+The four notebooks follow a systematic progression from raw NBA data exploration through machine learning model evaluation for injury prediction, implementing sports analytics methodology using 4.78 million play by play records spanning 2015-2023. The pipeline transforms granular game event data into actionable risk indicators through workload analysis, fatigue modeling, and performance decline detection, generating 76 engineered features before optimizing to 34 selected variables for deployment. Click each documented notebook below for step by step documentation, code, outputs, and more.
 
 - **[01_Exploratory Data Analysis](01_EDA.ipynb)** 
 - **[02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb)** 
@@ -23,7 +23,7 @@ Fill in later
 
 ## Notebook Descriptions
 
-### 1. [01_Exploratory Data Analysis](01_EDA_complete.pdf)
+### 1. [01_Exploratory Data Analysis](01_EDA.ipynb)
 
 This notebook conducts systematic exploratory data analysis on NBA play by play data spanning 2015-2023, implementing academic methodology to understand player workload patterns, injury indicators, and data quality for machine learning pipeline development. The analysis covers 4.78 million play by play records across 10,460 games and 2,678 unique players from the modern analytics era of professional basketball.
 
