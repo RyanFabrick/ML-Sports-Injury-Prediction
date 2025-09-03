@@ -211,12 +211,12 @@ risk_score = (usage_rate/35.0 * 0.25) +
 - Consider provisioned concurrency for consistent performance
 
 ### **Memory and Timeout Settings**
-- **Recommended Memory**: 512 MB for model operations, 256 MB for rule-based
+- **Recommended Memory**: 512 MB for model operations, 256 MB for rule based
 - **Timeout**: 5 minutes accommodates S3 operations and model inference
 - **Concurrent Executions**: Default limits sufficient for daily prediction runs
 
 ### **Cost Optimization**
-- Rule-based approach reduces compute time by ~70%
+- Rule based approach reduces compute time by ~70%
 - S3 storage costs minimal for daily prediction files
 - Consider CloudWatch logs retention policy for cost management
 
