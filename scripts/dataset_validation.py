@@ -145,5 +145,5 @@ def validate_basketball_dataset(db_path, is_zip=False):
     conn.close()
 
 if __name__ == "__main__":
-    db_path = r"C:\Users\ryanf\Desktop\nba.sqlite" 
+    db_path = r"PUT_ACTUAL_PATH_HERE\nba_database.sqlite"  # Update with actual path
     validate_basketball_dataset(db_path)

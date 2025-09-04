@@ -67,5 +67,5 @@ def explore_player_level_data(db_path):
     conn.close()
 
 if __name__ == "__main__":
-    db_path = r"C:\Users\ryanf\Desktop\nba.sqlite"
+    db_path = r"PUT_ACTUAL_PATH_HERE\nba_database.sqlite"  # Update with actual path
     explore_player_level_data(db_path)
