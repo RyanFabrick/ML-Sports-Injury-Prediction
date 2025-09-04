@@ -11,8 +11,8 @@
 
 SQL queries extracted from the [notebooks pipeline](../notebooks/README.md) of this repository.
 
-- EDA.sql - Exploratory data analysis queries for understanding the dataset structure and data quality. Corresponds to [01_Exploratory Data Analysis](01_EDA.ipynb) file.
-- feature_engineering.sql - Data extraction, data preprocessing, and feature creation queries for model training. Corresponds to [02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb) file.
+- [EDA.sql](EDA.sql) - Exploratory data analysis queries for understanding the dataset structure and data quality. Corresponds to [01_Exploratory Data Analysis](01_EDA.ipynb) file.
+- [feature_engineering.sql](feature_engineering.sql) - Data extraction, data preprocessing, and feature creation queries for model training. Corresponds to [02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb) file.
 
 ## Contributing
 
