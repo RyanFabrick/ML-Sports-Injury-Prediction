@@ -1,4 +1,4 @@
-# *AWS Deployment*
+# *AWS*
 
 ## Table of Contents
 - [Overview](#overview)
