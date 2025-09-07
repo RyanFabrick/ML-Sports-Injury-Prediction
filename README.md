@@ -4,7 +4,28 @@ A machine learning system that predicts NBA player injury risk using 4.78 millio
 
 ## Table of Contents
 
-Fill in later
+- [AWS, Notebook, SQL, Scripts, & Tableau READMEs](#aws-notebook-sql-scripts--tableau-readmes-more-detail--visual-examples)
+- [Overview](#overview)
+- [Why Did I Build This?](#why-did-i-build-this)
+- [Key Features](#key-features)
+- [System Architecture](#system-architecture)
+- [Demo Screenshots](#demo-screenshots)
+- [AWS Environment](#aws-environment)
+- [Technology Stack](#technology-stack)
+  - [Machine Learning & Data Science](#machine-learning--data-science)
+  - [Cloud Infrastructure](#cloud-infrastructure)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [Notebooks](#notebooks)
+- [Methodology & Sports Analytics Foundation](#methodology--sports-analytics-foundation)
+- [Overall Model Performances](#overall-model-performances)
+- [Key Feature Insights](#key-feature-insights)
+- [Use Cases](#use-cases)
+- [Risk Level Classification System](#risk-level-classification-system)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+- [Acknowledgments & References](#acknowledgments--references)
 
 ## AWS, Notebook, SQL, Scripts, & Tableau READMEs (More Detail & Visual Examples)
 
@@ -17,7 +38,7 @@ For more **comprehensive**, **specific**, and **thorough** documentation and exa
 
 ## Overview
 
-This project implements an end-to-end machine learning system for predicting NBA player injury risk using advanced sports analytics methodology. The system processes massive play by play datasets, engineers 76 sophisticated features, and deploys optimized models on AWS for real-time risk assessment. This repository provides:
+This project implements an end to end machine learning system for predicting NBA player injury risk using advanced sports analytics methodology. The system processes massive play by play datasets, engineers 76 sophisticated features, and deploys optimized models on AWS for real time risk assessment. This repository provides:
 
 - **Machine Learning Models**: XGBoost, Neural Networks, Random Forest, and Logistic Regression with comprehensive evaluation
 - **Serverless AWS Deployment**: Lambda functions with S3 integration for scalable inference
@@ -104,6 +125,27 @@ Fill in later
 ## Demo Screenshots
 
 Fill in later
+
+## AWS Environment
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     AWS Lambda Function                         │
+│ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐                 │
+│ │ Model       │ │ Feature     │ │ Risk        │                 │
+│ │ Loading     │ │ Processing  │ │ Scoring     │                 │
+│ │ (S3)        │ │ Pipeline    │ │ & Output    │                 │
+│ └─────────────┘ └─────────────┘ └─────────────┘                 │
+└─────────────────────────┼───────────────────────────────────────┘
+                          │ 
+┌─────────────────────────┼───────────────────────────────────────┐
+│                    S3 Storage Buckets                           │
+│ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐                 │
+│ │ Model       │ │ Scaler &    │ │ Prediction  │                 │
+│ │ Artifacts   │ │ Features    │ │ Outputs     │                 │
+│ │ (.pkl)      │ │ (.pkl)      │ │ (.csv)      │                 │
+│ └─────────────┘ └─────────────┘ └─────────────┘                 │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ### AWS Lambda Response - Live Predictions
 ```json
@@ -223,7 +265,7 @@ Built using modern sports analytics methodology emphasizing:
 - **Rolling Workload Metrics** (24 features): 7, 14, 30-day windows for shooting, defensive, contact loads
 - **Performance Comparison Features** (18 features): Current vs historical baselines with anomaly detection  
 - **Fatigue and Recovery Assessment** (12 features): Composite scoring with rest patterns and seasonal progression
-- **Usage Rate Analysis** (8 features): Position-adjusted intensity metrics and substitution patterns
+- **Usage Rate Analysis** (8 features): Position adjusted intensity metrics and substitution patterns
 - **Contextual Risk Profiling** (14 features): Physical attributes, career experience, temporal context
 
 ### Injury Classification System
@@ -246,11 +288,11 @@ Built using modern sports analytics methodology emphasizing:
 - **Architecture**: Maximum depth 3, learning rate 0.1, 100 estimators
 - **Regularization**: L1: 0.5, L2: 2.0 for overfitting prevention  
 - **Class Handling**: scale_pos_weight=40.77 for severe imbalance (97:1 test ratio)
-- **Cross-Validation**: 5 fold stratified with 0.143 PR-AUC optimization
+- **Cross Validation**: 5 fold stratified with 0.143 PR-AUC optimization
 
 ### Performance Validation Framework
 - **Risk Capture Excellence**: XGBoost identifies 48.1% of injuries in top 17% predictions
-- **Precision-Recall Trade-off**: Random Forest achieves highest precision (23.5%) for focused screening
+- **Precision Recall Trade off**: Random Forest achieves highest precision (23.5%) for focused screening
 - **Temporal Generalization**: Proper time series validation confirms real world applicability
 - **Clinical Decision Support**: Risk stratification enables targeted medical intervention
 
@@ -306,30 +348,7 @@ Built using modern sports analytics methodology emphasizing:
 - **Market Inefficiencies**: Identify undervalued players with low injury risk profiles
 - **Risk Management**: Portfolio construction considering injury correlation patterns
 
-## Deployment Architecture
-
-### AWS Environment
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     AWS Lambda Function                         │
-│ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐                 │
-│ │ Model       │ │ Feature     │ │ Risk        │                 │
-│ │ Loading     │ │ Processing  │ │ Scoring     │                 │
-│ │ (S3)        │ │ Pipeline    │ │ & Output    │                 │
-│ └─────────────┘ └─────────────┘ └─────────────┘                 │
-└─────────────────────────┼───────────────────────────────────────┘
-                          │ 
-┌─────────────────────────┼───────────────────────────────────────┐
-│                    S3 Storage Buckets                           │
-│ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐                 │
-│ │ Model       │ │ Scaler &    │ │ Prediction  │                 │
-│ │ Artifacts   │ │ Features    │ │ Outputs     │                 │
-│ │ (.pkl)      │ │ (.pkl)      │ │ (.csv)      │                 │
-│ └─────────────┘ └─────────────┘ └─────────────┘                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Risk Level Classification System
+## Risk Level Classification System
 ```python
 # Production risk thresholds
 if risk_probability >= 0.5:
@@ -369,18 +388,20 @@ This project is open source and available under the MIT License.
 
 - **[NBA Advanced Stats](https://www.nba.com/stats/)** - Official NBA statistical database providing play by play data foundation
 - **[Basketball Reference](https://www.basketball-reference.com/)** - Comprehensive NBA historical data and statistical methodology inspiration
-- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets?search=nba)** - Community-contributed datasets enabling reproducible sports analytics research
+- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets?search=nba)** - Community contributed datasets enabling reproducible sports analytics research
 - **[XGBoost](https://xgboost.readthedocs.io/)** - Optimized gradient boosting framework specifically designed for structured data and class imbalance scenarios
 - **[scikit-learn](https://scikit-learn.org/)** - Machine learning library providing preprocessing, model selection, and evaluation frameworks
 - **[TensorFlow](https://www.tensorflow.org/)** - Deep learning platform enabling neural network architectures for sequential sports data
 - **[SMOTE](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html)** - Synthetic Minority Oversampling Technique for addressing severe class imbalance in injury prediction
-- **[AWS Lambda](https://aws.amazon.com/lambda/)** - Serverless computing platform enabling scalable, cost-effective model deployment
+- **[AWS Lambda](https://aws.amazon.com/lambda/)** - Serverless computing platform enabling scalable, cost effective model deployment
 - **[Amazon S3](https://aws.amazon.com/s3/)** - Object storage service for model artifacts, predictions, and data persistence
-- **[Tableau](https://www.tableau.com/)** - Business intelligence platform for executive-level sports analytics dashboards
-- **[Pandas](https://pandas.pydata.org/)** - Data manipulation library optimized for large-scale sports dataset processing
+- **[Tableau](https://www.tableau.com/)** - Business intelligence platform for executive level sports analytics dashboards
+- **[Pandas](https://pandas.pydata.org/)** - Data manipulation library optimized for large scale sports dataset processing
 - **[NumPy](https://numpy.org/)** - Numerical computing foundation enabling efficient feature engineering operations
 - **[Jupyter Project](https://jupyter.org/)** - Interactive computing environment for reproducible sports analytics research and documentation
 - **[PostgreSQL](https://www.postgresql.org/)** - Advanced relational database system for structured sports data management
-- **[Sports Analytics Literature](https://www.tandfonline.com/toc/rjsp20/current)** - Academic research foundation in sports performance modeling and injury prediction methodologies
 
-FILL in later
+_________________________________________________________
+Built with ❤️ for the machine learning and NBA community
+
+Fill in later
