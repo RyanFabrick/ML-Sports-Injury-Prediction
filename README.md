@@ -124,7 +124,11 @@ Fill in later
 
 ## Demo Screenshots
 
-Fill in later
+*There aren't any screenshots of the model itself. Those can be found in the [Notebooks pipeline](notebooks/README.md) with documentation, evlauation, and visualizations. The only demo screenshot here is the Tableau dashboard which has more in depth information in the [Tableau README](tableau/README.md).
+
+<div align="center">
+<img width="645" height="855" alt="tableau screenshot" src="https://github.com/user-attachments/assets/ae6d4e14-3825-4ae3-a9d6-6d321dd2df0c" />
+</div>
 
 ## AWS Environment
 ```
