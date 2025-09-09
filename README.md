@@ -192,6 +192,7 @@ Fill in later
 
 ## Project Structure
 
+```
 ML SPORTS PREDICTION/
 ├── aws/
 │   ├── lambda_function_working.py
@@ -226,6 +227,7 @@ ML SPORTS PREDICTION/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
+```
 
 ## Quick Start
 
