@@ -192,7 +192,40 @@ Fill in later
 
 ## Project Structure
 
-Fill in later
+ML SPORTS PREDICTION/
+├── aws/
+│   ├── lambda_function_working.py
+│   ├── lambda_function.py
+│   └── README.md
+├── data/
+│   ├── features/
+│   ├── processed/
+│   └── raw/
+├── models/
+├── notebooks/
+│   ├── 01_EDA.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   ├── 03_modeling.ipynb
+│   ├── 04_evaluation.ipynb
+│   └── README.md
+├── scripts/
+│   ├── dataset_validation.py
+│   ├── player_stats_explorer.py
+│   ├── static_player_feature_data.py
+│   └── README.md
+├── sql/
+│   ├── EDA.sql
+│   ├── feature_engineering.sql
+│   └── README.md
+├── tableau/
+│   ├── NBA Risk Prediction Dashboard.twbx
+│   └── README.md
+├── venv/
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
 
 ## Quick Start
 
