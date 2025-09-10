@@ -175,7 +175,9 @@ Fill in later
 ### Machine Learning & Data Science
 - **Python**: Primary language for data science pipeline and model development
 - **XGBoost**: Gradient boosting framework optimized for structured data and class imbalance
-- **TensorFlow**: Deep learning framework for neural network architectures
+- **Random Forest**: Ensemble method for feature importance analysis and risk stratification
+- **Logistic Regression**: Baseline model providing maximum interpretability for real-time alerts
+- **Neural Networks (TensorFlow)**: Deep learning architecture for sequential sports data patterns
 - **scikit-learn**: ML library for preprocessing, modeling, and evaluation
 - **Pandas**: Advanced data manipulation for 4.78M record processing
 - **NumPy**: Numerical computing foundation for feature engineering
