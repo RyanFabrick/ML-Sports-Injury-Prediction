@@ -52,7 +52,13 @@ This project implements an end to end machine learning system for predicting NBA
 
 ## Why Did I Build This?
 
-Fill in later
+Here's why I created this NBA injury prediction project:
+
+As a passionate Lakers fan born and raised in LA and a lifelong sports enthusiast, I've always been fascinated by the intersection of basketball analytics, machine learning, and data science. Growing up watching players deal with injuries that could make or break championship runs, I became deeply interested in whether modern data science could help predict and prevent these career altering events. The NBA's evolution into the analytics era, with load management becoming a critical strategy and teams investing heavily in sports science, presented the perfect opportunity to explore this question through a machine learning project.
+
+From a technical development perspective, this project allowed me to significantly expand my skill set beyond my existing foundation in Python, Flask, pandas, NumPy, and scikit-learn. While I have solid experience with traditional web development using React, HTML, CSS, TypeScript, and Tailwind CSS, I wanted strengthen my skills and knowledge around the full data science + machine learning pipeline and cloud deployment ecosystem. This project became my gateway to mastering SQL for sports data analysis, implementing serverless AWS architecture with Lambda functions and S3 storage, creating professional business intelligence dashboards in Tableau, and building neural networks with TensorFlow. The combination of my genuine passion for basketball analytics and the opportunity to gain hands on experience with enterprise level technologies made this an ideal project for advancing toward my career goals in software engineering, data science, and machine learning.
+
+The scale and complexity of working with 4.78 million NBA play by play records spanning 2015-2023 also provided invaluable experience in handling real world data challenges from severe class imbalance (only 2.4% injury rate) to temporal validation complexities that prevent data leakage. This project demonstrates not just technical proficiency across the modern data stack, but also the kind of end to end thinking and problem solving approach that's essential for roles in data engineering, machine learning engineering, and applied AI research. It's a good showcase of how I can combine domain expertise, technical skills, and business acumen to deliver production ready solutions that could genuinely impact how professional sports teams approach player health management.
 
 ## Key Features
 
