@@ -435,7 +435,7 @@ This project is open source and available under the MIT License.
 
 - **[NBA Advanced Stats](https://www.nba.com/stats/)** - Official NBA statistical database providing play by play data foundation
 - **[Basketball Reference](https://www.basketball-reference.com/)** - Comprehensive NBA historical data and statistical methodology inspiration
-- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets?search=nba)** - Community contributed datasets enabling reproducible sports analytics research
+- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets/wyattowalsh/basketball)** - Public kaggle dataset enabling reproducible sports analytics research from creator Wyatt Walsh
 - **[XGBoost](https://xgboost.readthedocs.io/)** - Optimized gradient boosting framework specifically designed for structured data and class imbalance scenarios
 - **[scikit-learn](https://scikit-learn.org/)** - Machine learning library providing preprocessing, model selection, and evaluation frameworks
 - **[TensorFlow](https://www.tensorflow.org/)** - Deep learning platform enabling neural network architectures for sequential sports data
@@ -451,4 +451,4 @@ This project is open source and available under the MIT License.
 _________________________________________________________
 Built with ❤️ for the machine learning and NBA community
 
-Fill in later
+This personal project demonstrates my machine learning engineering capabilities, cloud infrastructure skills, and data analytics specialization. As a UCSB Statistics and Data Science student with a genuine passion for basketball, data science and engineering, and software engineering, I designed this as an end to end showcase of my technical abilities across the complete ML pipeline. From EDA on massive datasets (4.78M records) and feature engineering (76 features) to AWS serverless deployment and professional Tableau dashboards. It highlights my skills in implementing and optimizing diverse ML algorithms including XGBoost, Random Forest, TensorFlow Neural Networks, and Logistic Regression, handling severe class imbalance, temporal validation methodologies, MLOps with AWS Lambda and S3, business and data visualization, and my overall ability to bridge the gap between technical complexity and real world applications.

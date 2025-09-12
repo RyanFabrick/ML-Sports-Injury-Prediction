@@ -14,7 +14,7 @@
     
 ## Overview
 
-The four notebooks follow a systematic progression from raw NBA data exploration through machine learning model evaluation for injury prediction, implementing sports analytics methodology using 4.78 million play by play records spanning 2015-2023. The pipeline transforms granular game event data into actionable risk indicators through workload analysis, fatigue modeling, and performance decline detection, generating 76 engineered features before optimizing to 34 selected variables for deployment. Click each documented notebook below for step by step documentation, code, outputs, and more.
+The four notebooks follow a systematic progression from raw NBA data exploration through machine learning model evaluation for injury prediction, implementing sports analytics methodology using 4.78 million play by play records spanning 2015-2023. This is the [dataset](https://www.kaggle.com/datasets/wyattowalsh/basketball). The pipeline transforms granular game event data into actionable risk indicators through workload analysis, fatigue modeling, and performance decline detection, generating 76 engineered features before optimizing to 34 selected variables for deployment. Click each documented notebook below for step by step documentation, code, outputs, and more.
 
 - **[01_Exploratory Data Analysis](01_EDA.ipynb)** 
 - **[02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb)** 
@@ -25,7 +25,7 @@ The four notebooks follow a systematic progression from raw NBA data exploration
 
 ### 1. [01_Exploratory Data Analysis](01_EDA.ipynb)
 
-This notebook conducts systematic exploratory data analysis on NBA play by play data spanning 2015-2023, implementing academic methodology to understand player workload patterns, injury indicators, and data quality for machine learning pipeline development. The analysis covers 4.78 million play by play records across 10,460 games and 2,678 unique players from the modern analytics era of professional basketball.
+This notebook conducts systematic exploratory data analysis on NBA play by play data spanning 2015-2023, implementing methodology to understand player workload patterns, injury indicators, and data quality for machine learning pipeline development. The analysis covers 4.78 million play by play records across 10,460 games and 2,678 unique players from the modern analytics era of professional basketball.
 
 **Key Analytical Findings:**
 - **Modern Analytics Era Focus**: Established 2015+ timeframe capturing load management revolution, tracking camera implementation, and post-Warriors championship pace changes, providing 4.78M records across 9 seasons with consistent methodology
@@ -277,7 +277,7 @@ This project is open source and available under the MIT License.
 
 - **[NBA Advanced Stats](https://www.nba.com/stats/)** - Official NBA statistical database providing play by play data foundation
 - **[Basketball Reference](https://www.basketball-reference.com/)** - Comprehensive NBA historical data and statistical methodology inspiration
-- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets?search=nba)** - Community contributed datasets enabling reproducible sports analytics research
+- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets/wyattowalsh/basketball)** - Public kaggle dataset enabling reproducible sports analytics research from creator Wyatt Walsh
 - **[XGBoost](https://xgboost.readthedocs.io/)** - Optimized gradient boosting framework specifically designed for structured data and class imbalance scenarios
 - **[scikit-learn](https://scikit-learn.org/)** - Machine learning library providing preprocessing, model selection, and evaluation frameworks
 - **[TensorFlow](https://www.tensorflow.org/)** - Deep learning platform enabling neural network architectures for sequential sports data

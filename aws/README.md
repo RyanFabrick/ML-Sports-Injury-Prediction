@@ -257,7 +257,7 @@ This project is open source and available under the MIT License.
 
 - **[NBA Advanced Stats](https://www.nba.com/stats/)** - Official NBA statistical database providing play by play data foundation
 - **[Basketball Reference](https://www.basketball-reference.com/)** - Comprehensive NBA historical data and statistical methodology inspiration
-- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets?search=nba)** - Community contributed datasets enabling reproducible sports analytics research
+- **[Kaggle NBA Datasets](https://www.kaggle.com/datasets/wyattowalsh/basketball)** - Public kaggle dataset enabling reproducible sports analytics research from creator Wyatt Walsh
 - **[XGBoost](https://xgboost.readthedocs.io/)** - Optimized gradient boosting framework specifically designed for structured data and class imbalance scenarios
 - **[scikit-learn](https://scikit-learn.org/)** - Machine learning library providing preprocessing, model selection, and evaluation frameworks
 - **[TensorFlow](https://www.tensorflow.org/)** - Deep learning platform enabling neural network architectures for sequential sports data
