@@ -195,7 +195,6 @@ The scale and complexity of working with 4.78 million NBA play by play records s
 - **AWS Lambda**: Serverless computing for scalable model inference
 - **Amazon S3**: Object storage for model artifacts and prediction outputs
 - **AWS SageMaker**: Machine learning platform for model training and deployment
-- **PostgreSQL**: Relational database for structured sports data storage
 - **SQLite**: Local database for development and feature engineering
 
 ## Project Structure
@@ -446,7 +445,7 @@ This project is open source and available under the MIT License.
 - **[Pandas](https://pandas.pydata.org/)** - Data manipulation library optimized for large scale sports dataset processing
 - **[NumPy](https://numpy.org/)** - Numerical computing foundation enabling efficient feature engineering operations
 - **[Jupyter Project](https://jupyter.org/)** - Interactive computing environment for reproducible sports analytics research and documentation
-- **[PostgreSQL](https://www.postgresql.org/)** - Advanced relational database system for structured sports data management
+- **[SQLite](https://www.sqlite.org/)** - Self contained SQL database engine enabling efficient local data processing and feature engineering
 
 _________________________________________________________
 Built with ❤️ for the machine learning and NBA community

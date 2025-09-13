@@ -53,7 +53,7 @@ This project is open source and available under the MIT License.
 - **[Pandas](https://pandas.pydata.org/)** - Data manipulation library optimized for large scale sports dataset processing
 - **[NumPy](https://numpy.org/)** - Numerical computing foundation enabling efficient feature engineering operations
 - **[Jupyter Project](https://jupyter.org/)** - Interactive computing environment for reproducible sports analytics research and documentation
-- **[PostgreSQL](https://www.postgresql.org/)** - Advanced relational database system for structured sports data management
+- **[SQLite](https://www.sqlite.org/)** - Self contained SQL database engine enabling efficient local data processing and feature engineering
 
 _________________________________________________________
 Built with ❤️ for the machine learning and NBA community

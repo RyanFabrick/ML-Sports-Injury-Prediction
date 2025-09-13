@@ -12,8 +12,8 @@
 
 SQL queries extracted from the [notebooks pipeline](../notebooks/README.md) of this repository.
 
-- [EDA.sql](EDA.sql) - Exploratory data analysis queries for understanding the dataset structure and data quality. Corresponds to [01_Exploratory Data Analysis](01_EDA.ipynb) file.
-- [feature_engineering.sql](feature_engineering.sql) - Data extraction, data preprocessing, and feature creation queries for model training. Corresponds to [02_Preprocessing & Feature Engineering](02_feature_engineering.ipynb) file.
+- [EDA.sql](EDA.sql) - Exploratory data analysis queries for understanding the dataset structure and data quality. Corresponds to [01_Exploratory Data Analysis](/notebooks/01_EDA.ipynb) file.
+- [feature_engineering.sql](feature_engineering.sql) - Data extraction, data preprocessing, and feature creation queries for model training. Corresponds to [02_Preprocessing & Feature Engineering](/notebooks/02_feature_engineering.ipynb) file.
 
 ## Contributing
 
@@ -53,7 +53,7 @@ This project is open source and available under the MIT License.
 - **[Pandas](https://pandas.pydata.org/)** - Data manipulation library optimized for large scale sports dataset processing
 - **[NumPy](https://numpy.org/)** - Numerical computing foundation enabling efficient feature engineering operations
 - **[Jupyter Project](https://jupyter.org/)** - Interactive computing environment for reproducible sports analytics research and documentation
-- **[PostgreSQL](https://www.postgresql.org/)** - Advanced relational database system for structured sports data management
+- **[SQLite](https://www.sqlite.org/)** - Self contained SQL database engine enabling efficient local data processing and feature engineering
 
 _________________________________________________________
 Built with ❤️ for the machine learning and NBA community

@@ -94,10 +94,10 @@ risk_score = (usage_rate/35.0 * 0.25) +
   - scikit-learn layer (ML model support)
 
 ### **Amazon S3**
-- **Bucket**: ryan-ml-sports-injury-prediction
-- **Structure**:
+- **Bucket**: your-bucket-name
+- **Resource**: "arn:aws:s3:::your-bucket-name/*"
   ```
-  ryan-ml-sports-injury-prediction/
+  your-bucket-name/
   ├── models/
   │   ├── xgboost_20250820_161828.pkl
   │   ├── nba_injury_predictor_v1_scaler.pkl
@@ -123,11 +123,10 @@ risk_score = (usage_rate/35.0 * 0.25) +
 # 2. scikit-learn layer (for model support)
 ```
 
-### **Environment Variables**
-- No environment variables required (bucket name hardcoded for simplicity)
-- Consider parameterizing bucket_name for multi environment deployment
-
 ### **IAM Permissions Required**
+
+**Note**: Replace *your-bucket-name* with your actual S3 bucket name.
+
 ```json
 {
     "Version": "2012-10-17",
@@ -138,7 +137,7 @@ risk_score = (usage_rate/35.0 * 0.25) +
                 "s3:GetObject",
                 "s3:PutObject"
             ],
-            "Resource": "arn:aws:s3:::ryan-ml-sports-injury-prediction/*"
+            "Resource": "arn:aws:s3:::your-bucket-name/*"
         }
     ]
 }
@@ -268,7 +267,7 @@ This project is open source and available under the MIT License.
 - **[Pandas](https://pandas.pydata.org/)** - Data manipulation library optimized for large scale sports dataset processing
 - **[NumPy](https://numpy.org/)** - Numerical computing foundation enabling efficient feature engineering operations
 - **[Jupyter Project](https://jupyter.org/)** - Interactive computing environment for reproducible sports analytics research and documentation
-- **[PostgreSQL](https://www.postgresql.org/)** - Advanced relational database system for structured sports data management
+- **[SQLite](https://www.sqlite.org/)** - Self contained SQL database engine enabling efficient local data processing and feature engineering
 
 _________________________________________________________
 Built with ❤️ for the machine learning and NBA community
